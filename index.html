@@ -32,16 +32,16 @@
       responseDiv.innerText = "處理中，請稍候...";
 
       try {
-        const res = await fetch('https://gemini-webcrawler-api.onrender.com/ask', {
+        const res = await fetch('https://gemini-webcrawler-api.onrender.com/api/ask', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url, question })
         });
 
         const data = await res.json();
-        responseDiv.innerText = data.answer || "無回應";
+        responseDiv.innerText = data.reply || "❌ 無回應";
       } catch (err) {
-        responseDiv.innerText = "發生錯誤：" + err.message;
+        responseDiv.innerText = "❌ 發生錯誤：" + err.message;
       }
     }
   </script>
